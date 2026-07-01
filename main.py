@@ -49,8 +49,8 @@ y = np.zeros(thrLayer_size)
 grad_cost_b_3 = np.zeros(np.shape(secBais))
 grad_cost_b_2 = np.zeros(np.shape(firBais))
 
-grad_cost_w_3 = rng.uniform(np.shape(secWeight))
-grad_cost_w_2 = rng.uniform(np.shape(firWeight))
+grad_cost_w_3 = np.zeros(np.shape(secWeight))
+grad_cost_w_2 = np.zeros(np.shape(firWeight))
 
 def sigma(x):
     scaled_x = x / sigma_scale
