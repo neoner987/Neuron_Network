@@ -11,10 +11,10 @@ _Input = np.zeros(m.Input_size)
 Test_input_neuron = np.zeros(m.Input_size)
 
 if __name__ == "__main__":
-    Bais1 = np.load(Path("savedData/softMax/B1.npy"))
-    Bais2 = np.load(Path("savedData/softMax/B2.npy"))
-    Weight1 = np.load(Path("savedData/softMax/W1.npy"))
-    Weight2 = np.load(Path("savedData/softMax/W2.npy"))
+    Bais1 = np.load(Path("savedData/B1.npy"))
+    Bais2 = np.load(Path("savedData/B2.npy"))
+    Weight1 = np.load(Path("savedData/W1.npy"))
+    Weight2 = np.load(Path("savedData/W2.npy"))
     while True:
         _test_num = r.randint(0, 9)
         _text_path += str(_test_num)

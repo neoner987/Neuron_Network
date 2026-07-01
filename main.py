@@ -84,10 +84,10 @@ def softMax(x):
 if __name__ == "__main__":
     np.set_printoptions(threshold=sys.maxsize)
     try:
-        firBais = np.load(Path("savedData/softMax/B1.npy"))
-        secBais = np.load(Path("savedData/softMax/B2.npy"))
-        firWeight = np.load(Path("savedData/softMax/W1.npy"))
-        secWeight = np.load(Path("savedData/softMax/W2.npy"))
+        firBais = np.load(Path("savedData/B1.npy"))
+        secBais = np.load(Path("savedData/B2.npy"))
+        firWeight = np.load(Path("savedData/W1.npy"))
+        secWeight = np.load(Path("savedData/W2.npy"))
     except:
         firBais = rng.uniform(-random_range, random_range, secLayer_size)
         secBais = rng.uniform(-random_range, random_range, thrLayer_size)
@@ -139,10 +139,10 @@ if __name__ == "__main__":
                 firWeight -= (learning_rate * grad_cost_w_2) / batch_size
                 secWeight -= (learning_rate * grad_cost_w_3) / batch_size
 
-                np.save(Path("savedData/softMax/W1.npy"), firWeight)
-                np.save(Path("savedData/softMax/W2.npy"), secWeight)
-                np.save(Path("savedData/softMax/B1.npy"), firBais)
-                np.save(Path("savedData/softMax/B2.npy"), secBais)
+                np.save(Path("savedData/W1.npy"), firWeight)
+                np.save(Path("savedData/W2.npy"), secWeight)
+                np.save(Path("savedData/B1.npy"), firBais)
+                np.save(Path("savedData/B2.npy"), secBais)
 
                 batchIndex = 0
                 cost_func = 0
