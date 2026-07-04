@@ -4,7 +4,13 @@ import numpy as np
 from PIL import Image, ImageTk
 from pathlib import Path
 import main as m
+import os
+import sys
 
+def get_resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
 
 
 text_path = "data/testing/"
@@ -42,7 +48,7 @@ class Viewer:
             bg = "black", fg = "white"
         )
         self.num_Label.pack(padx=20, pady=(0, 20))
-        self.num_Label.place_configure(x=436, y=32)
+        self.num_Label.place_configure(x=436, y=25)
 
         self.canvas = tk.Canvas(
             self.root,
@@ -57,7 +63,7 @@ class Viewer:
         self.value_var = tk.IntVar(value=1000)
         self.slider = tk.Scale(
             self.root,
-            from_=100,
+            from_=10,
             to=2000,
             resolution=1,
             orient="horizontal",
@@ -113,7 +119,8 @@ def example_auto_updating():
         while True:
             test_num = r.randint(0, 9)
             text_path += str(test_num)
-            file_path = Path(text_path + "/" + str(r.randint(0, 60000)) + ".png")
+            file_path = get_resource_path(text_path + "/" + str(r.randint(0, 60000)) + ".png")
+            file_path = Path(file_path)
             if file_path.is_file():
                 img = Image.open(file_path).convert('L')
                 break
@@ -126,9 +133,9 @@ def example_auto_updating():
     viewer.run()
 
 
-if __name__ == "__main__":
-    firBais = np.load(Path("savedData/B1.npy"))
-    secBais = np.load(Path("savedData/B2.npy"))
-    firWeight = np.load(Path("savedData/W1.npy"))
-    secWeight = np.load(Path("savedData/W2.npy"))
-    example_auto_updating()
+
+firBais = np.load(get_resource_path("savedData/B1.npy"))
+secBais = np.load(get_resource_path("savedData/B2.npy"))
+firWeight = np.load(get_resource_path("savedData/W1.npy"))
+secWeight = np.load(get_resource_path("savedData/W2.npy"))
+example_auto_updating()
